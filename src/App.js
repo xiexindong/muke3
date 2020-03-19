@@ -1,10 +1,4 @@
 import React ,{Component} from "react";
+import Login from "./container/login"
 
-
-class App extends Component{
-    render(){
-        return<div>this is app</div>
-    }
-}
-
-export default App
+export default Login
