@@ -1,6 +1,7 @@
- const { override, fixBabelImports } = require('customize-cra');
+ const { override, fixBabelImports,addDecoratorsLegacy } = require('customize-cra');
  module.exports = override(
-       fixBabelImports('import', {
+      addDecoratorsLegacy(),
+      fixBabelImports('import', {
              libraryName: 'antd-mobile',
              style: 'css',
        }),
