@@ -7,7 +7,7 @@ class Register extends Component {
     render() {
       return (
         <div className="App">
-          <button onClick={this.handleClick()}>点我</button> 
+          <button onClick={this.handleClick}>点我</button> 
         </div>
       );
     }

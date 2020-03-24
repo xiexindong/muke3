@@ -10,7 +10,7 @@ import { connect } from "react-redux"
 class Login extends Component{
     constructor(props){
         super()
-        console.log("this",this)
+       
     }
     state={
         user:"",
@@ -24,8 +24,7 @@ class Login extends Component{
     }
 
     handelLogin = ()=>{
-        // console.log(this)
-        // this.props.login(this.state)
+        this.props.login(this.state)
     }
 
     render(){
@@ -43,5 +42,18 @@ class Login extends Component{
     }
 }
 
-
 export default Login
+
+/*const  mapStateToProps = (state, ownProps) => {
+    return {
+        state: state.user
+    }
+}
+使用这种方式 是不需要 react-thunk 来处理异步的
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return { 
+        login
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Login)*/
