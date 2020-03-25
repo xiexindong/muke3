@@ -8,10 +8,6 @@ import { connect } from "react-redux"
 
 @connect(state => state.user,{login})
 class Login extends Component{
-    constructor(props){
-        super()
-       
-    }
     state={
         user:"",
         pwd:""
@@ -22,13 +18,12 @@ class Login extends Component{
             [key]:v
         })
     }
-
     handelLogin = ()=>{
         this.props.login(this.state)
     }
 
     render(){
-    
+
         return<div>
             <List>
                 <InputItem onChange={(v)=>this.handelChange("user",v)} >用户名</InputItem>
@@ -52,7 +47,7 @@ export default Login
 使用这种方式 是不需要 react-thunk 来处理异步的
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return { 
+    return {
         login
     }
 }

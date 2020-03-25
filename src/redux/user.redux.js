@@ -1,3 +1,4 @@
+
 const LOAD_DATA = "LOAD_DATA";
 const LOGIN_SUCESS = 'LOGIN_SUCESS';
 
@@ -11,9 +12,10 @@ const initData = {
 export function user(state = initData, action){
     switch(action.type){
         case LOAD_DATA:
+            console.log("action.type",action.type)
             return{...state,...action.payload}
         default:
-            return state    
+            return state
     }
 }
 
@@ -31,20 +33,21 @@ function loginSuccess(data){
 // dispatch
 
 export function login({user,pwd}){
-    console.log("user,pwd",user,pwd)
-    // if(!user||!pwd){
-    //     return "请填写用户名和密码"
-    // }
+    if(!user||!pwd){
+        return "请填写用户名和密码"
+    }
+    console.log({user,pwd})
 
-    return dispatch => {
-           dispatch(loginSuccess({user:"xiexindong",pwd:"123"}))
-        // console.log(22222)
-        // setTimeout(()=>{
-        //     console.log(111111)
-           
-        // },1000)
+    return (dispatch,getState) => {
+        axios.post("/user/login",{user,pwd}).then(res=>{
+            if(res.status == 200 && res.data.code == 0){
+                dispatch(loginSuccess(res.data.data));
+            }else{
+                dispatch(errorMsg(res.data.msg))
+            }
+        })
     }
 
-    
+
 
 }
