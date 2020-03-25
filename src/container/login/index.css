@@ -1,0 +1,13 @@
+.am-list-item.am-input-item{
+    padding-right: 15px;
+}
+.am-list-item .am-list-line{
+    padding-right:0;
+}
+.WhiteSpace_bg{
+    background-color:#f5f5f9;
+}
+/* body{
+    background: url("./bg.jpg") no-repeat center;
+    background-size: auto;
+} */

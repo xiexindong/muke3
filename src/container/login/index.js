@@ -1,9 +1,10 @@
 import React ,{Component} from "react"
-import {List,InputItem,Button} from "antd-mobile"
+import {List,InputItem,Button,WingBlank,WhiteSpace} from "antd-mobile"
 import { login } from "../../redux/user.redux"
 import { connect } from "react-redux"
-
-
+import Logo from "../../component/logo/logo"
+import Icons from "../../component/icons"
+import "./index.css"
 
 
 @connect(state => state.user,{login})
@@ -27,17 +28,27 @@ class Login extends Component{
         this.props.login(this.state)
     }
 
-    render(){
+    render(){        
     
         return<div>
+            {/* <Logo/> */}
+            <WingBlank>
             <List>
-                <InputItem onChange={(v)=>this.handelChange("user",v)} >用户名</InputItem>
-                <InputItem onChange={(v)=>this.handelChange("pwd",v)}>密码</InputItem>
+                <InputItem onChange={(v)=>this.handelChange("user",v)} >
+                <Icons icon="user"/>
+                </InputItem>
+                <WhiteSpace size="sm" className="WhiteSpace_bg"/>
+                <InputItem onChange={(v)=>this.handelChange("pwd",v)}>
+                 <Icons icon="pwd"/>
+                </InputItem>
             </List>
+                <WhiteSpace size="lg"/>
             <List>
                 <Button type="primary" onClick={this.handelLogin}>登录</Button>
+                <WhiteSpace size="sm"/>
                 <Button type="primary">注册</Button>
             </List>
+            </WingBlank>
         </div>
     }
 }
