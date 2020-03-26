@@ -11,7 +11,7 @@ import "./index.css"
 class Login extends Component{
     constructor(props){
         super()
-       
+
     }
     state={
         user:"",
@@ -28,10 +28,9 @@ class Login extends Component{
         this.props.login(this.state)
     }
 
-    render(){        
-    
+    render(){
         return<div>
-            {/* <Logo/> */}
+            <Logo/>
             <WingBlank>
             <List>
                 <InputItem onChange={(v)=>this.handelChange("user",v)} >
@@ -42,7 +41,7 @@ class Login extends Component{
                  <Icons icon="pwd"/>
                 </InputItem>
             </List>
-                <WhiteSpace size="lg"/>
+              <div className="error-msg">{this.props.msg?this.props.msg:null}</div>
             <List>
                 <Button type="primary" onClick={this.handelLogin}>登录</Button>
                 <WhiteSpace size="sm"/>
@@ -63,7 +62,7 @@ export default Login
 使用这种方式 是不需要 react-thunk 来处理异步的
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return { 
+    return {
         login
     }
 }
