@@ -50,6 +50,7 @@ export function login({user,pwd}){
 
     return dispatch => {
         axios.post("/user/login",{user,pwd}).then(function (data) {
+            console.log("userdata",data)
             dispatch(loadData({user,pwd}))
         }).catch(function (error) {
 

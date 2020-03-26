@@ -1,9 +1,12 @@
 const express = require("express")
 const bodyParser = require("body-parser")
-const model = require("./model")
+const cookieParse = require("cookie-parser")
+const userRouter = require("./user")
+
 const app = express()
 
 
+app.use(cookieParse());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended:false}))
 
@@ -12,10 +15,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 
-app.post("/user/login",function (req,res) {
-    
-    console.log("req.body",req.body)
-})
+app.use("/user",userRouter)
 
 app.listen(9093,function () {
     console.log("服务已经启动")
