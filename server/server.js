@@ -6,7 +6,7 @@ const userRouter = require("./user")
 const app = express()
 
 
-app.use(cookieParse());
+app.use(cookieParse("secret"));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended:false}))
 

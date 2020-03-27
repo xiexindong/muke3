@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const db_user ="mongodb://localhost:27017/muke3"
-mongoose.connect(db_user)
+mongoose.connect(db_user,function(err){
+    if(err){
+        console.log("连接失败")
+    }else{
+        console.log("练级成功")
+    }
+})
 
 const Schema = mongoose.Schema
 

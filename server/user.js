@@ -7,19 +7,15 @@ const _filter_ = {"pwd":0,"__v":0};
 const cookieConfig = {expires:new Date(Date.now()+1000),httpOnly:true}// 置了“httpOnly”属性，则通过程序（JS 脚本、applet 等）将无法读取到COOKIE 信息，防止 XSS 攻击的产生 。
 
 
-router.post("/login",(req,res,next)=>{
-
+router.post("/login2",(req,res,next)=>{
     let {user,pwd} = req.body;
-   
     User.findOne({user,pwd:md5pwd(pwd)},_filter_,function(err,doc){
-        console.log("doc",{doc})
         if(!doc){
-            return{code:1,body:{msg:"用户不存在"}}
+            return res.send({code:1,body:{msg:"用户不存在"}})
         }else{
-           
-           res.cookie("userId",doc._id,cookieConfig);
+           res.cookie("userId",doc._id,cookieConfig,{signed:true});
            return res.send({code:0,body:doc})
-            
+
         }
     })
 })
