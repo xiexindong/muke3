@@ -6,8 +6,9 @@ import  thunk  from "redux-thunk"
 import {comReducer} from "./redux/index"
 import Login from "./container/login"
 import Register from "./container/register"
-import GeniusInfo from "./container/geniusinfo/geniusinfo"
+import Geniusinfo from "./container/geniusinfo/geniusinfo"
 import BossInfo from "./container/bossinfo/bossinfo"
+import AuthRouter from "./component/authrouter/authrouter"
 import {composeWithDevTools} from 'redux-devtools-extension';
 import "./common.css"
 
@@ -23,20 +24,13 @@ class App extends Component{
     render(){
         return(<Provider store={store}>
             <Router>
+                <AuthRouter/>
                 <div>
                     <Switch>
-                        <Route exact   path={["/","/login"]}>
-                            <Login/>
-                        </Route>
-                        <Route path="/register">
-                            <Register/>
-                        </Route>
-                        <Route path="/bossInfo">
-                            <BossInfo/>
-                        </Route>
-                        <Route path="/geniusInfo">
-                            <GeniusInfo/>
-                        </Route>
+                        <Route exact   path={["/","/login"]} component={Login}/>
+                        <Route path="/register" component={Register}/>
+                        <Route path="/bossInfo"><BossInfo/></Route>
+                        <Route path="/geniusInfo"><Geniusinfo/></Route>
                     </Switch>
                 </div>
             </Router>

@@ -27,6 +27,9 @@ class Login extends Component{
     handelLogin = ()=>{
         this.props.login(this.state)
     }
+    handelRegister = ()=>{
+        this.props.history.push("/register")
+    }
 
     render(){
         return<div>
@@ -45,7 +48,7 @@ class Login extends Component{
             <List>
                 <Button type="primary" onClick={this.handelLogin}>登录</Button>
                 <WhiteSpace size="sm"/>
-                <Button type="primary">注册</Button>
+                <Button type="primary" onClick={this.handelRegister}>注册</Button>
             </List>
             </WingBlank>
         </div>

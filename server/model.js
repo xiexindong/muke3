@@ -13,7 +13,8 @@ const Schema = mongoose.Schema
 const models = {
     user:{
         "user":{type:String,'require':true},
-        "pwd":{type:String,'require':true}
+        "pwd":{type:String,'require':true},
+        "type":{type:String,"require":true}
     },
     chat:{
         "chatId":{type:String,'require':true},
@@ -21,7 +22,7 @@ const models = {
 }
 
 for(let m in models){
-            mongoose.model(m,new Schema(models[m]))
+        mongoose.model(m,new Schema(models[m]))
 }
 module.exports = {
     getModel:function (name) {
