@@ -23,14 +23,24 @@ router.post("/login",(req,res,next)=>{
 
 
 router.get("/info",(req,res,next)=>{
-    console.log("req.cookies",req.cookies)
-    let userId = req.cookie
+    let {userId} = req.cookies
     if(!userId){
         return res.send({code:1,body:{msg:"尚未登录"}})
     }
     User.findOne({_id:userId},_filter_,function(err,doc){
-        console.log("err",err)
-        console.log("doc",doc)
+        console.log("..doc",doc)
+        if(!doc){
+            return res.send({
+                code:1,
+                body:{
+                    msg:"后台出错"
+                }
+            })
+        }
+        if(doc){
+            return res.send({code:0, body:doc})
+        }
+    
     })
 })
 
@@ -55,7 +65,7 @@ router.post("/register",function(req,res){
                 })
             }else{ 
                 const {user,type,_id} = doc
-                res.cookie("userId",_id,{...cookieConfig,domain:"localhost:3000",path:"/"},{signed:true})
+                res.cookie("userId",_id,{ maxAge: 900000, httpOnly: true },{signed:true})
                 return res.send({code:0,body: {user,type,_id}})
             }
            

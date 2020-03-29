@@ -19,15 +19,15 @@ const initData = {
 
 
 export function user(state = initData, action){
+    console.log("action",action)
     switch(action.type){
-        case LOAD_DATA:
-            return{...state,msg:"",...action.payload}
         case LOGIN_SUCCESS:
             return {...state,msg:"",...action.payload,redirectTo:"/bossinfo"}
         case REGISTER_SUCCESS:
-            return{...state,msg:"",...action.payload,redirectTo:getRedirectPath({...action.payload})}    
+            return{...state,msg:"",...action.payload,redirectTo:getRedirectPath({...action.payload})}   
+       case LOAD_DATA:
+                return {...state,msg:"",...action.payload}         
         case ERROR_MSG:
-            
             return{...state,msg:action.data}
         default:
             return state
@@ -50,6 +50,7 @@ function errorMsg(data){
 function rigsterSuccess(data){
     return {type:REGISTER_SUCCESS,payload:data}
 }
+
 
 
 // dispatch
@@ -99,3 +100,4 @@ export function register( {user,pwd,type,repeatePwd} ){
 
     
 }
+
