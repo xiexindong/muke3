@@ -1,5 +1,6 @@
 import React ,{Component} from "react"
 import {List,InputItem,Button,WingBlank,WhiteSpace} from "antd-mobile"
+import {Redirect} from "react-router-dom"
 import { login } from "../../redux/user.redux"
 import { connect } from "react-redux"
 import Logo from "../../component/logo/logo"
@@ -7,11 +8,10 @@ import Icons from "../../component/icons"
 import "./index.css"
 
 
-@connect(state => state.user,{login})
+@connect(state=>state.user,{login})
 class Login extends Component{
     constructor(props){
         super()
-
     }
     state={
         user:"",
@@ -33,6 +33,7 @@ class Login extends Component{
 
     render(){
         return<div>
+            {this.props.redirectTo?<Redirect to={this.props.redirectTo}/>:null}
             <Logo/>
             <WingBlank>
             <List>
@@ -56,17 +57,3 @@ class Login extends Component{
 }
 
 export default Login
-
-/*const  mapStateToProps = (state, ownProps) => {
-    return {
-        state: state.user
-    }
-}
-使用这种方式 是不需要 react-thunk 来处理异步的
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        login
-    }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Login)*/

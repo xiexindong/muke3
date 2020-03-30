@@ -29,8 +29,8 @@ class App extends Component{
                     <Switch>
                         <Route exact   path={["/","/login"]} component={Login}/>
                         <Route path="/register" component={Register}/>
-                        <Route path="/bossInfo"><BossInfo/></Route>
-                        <Route path="/geniusInfo"><Geniusinfo/></Route>
+                        <Route path="/bossInfo" component={BossInfo}/>
+                        <Route path="/geniusInfo"component={Geniusinfo}/>
                     </Switch>
                 </div>
             </Router>
